@@ -39,9 +39,7 @@ DbcParser::DbcParser()
 	, message_re("^(BO_)\\s(\\d+)\\s(\\w+)\\:\\s(\\d+)\\s(\\w+|Vector__XXX)")
 	,
 	// NOTE: No multiplex support yet
-	signal_re(std::string("^") + whiteSpace + signalIdentifierPattern + whiteSpace + namePattern + whiteSpace + "\\:" + whiteSpace + bitStartPattern + "\\|"
-			  + lengthPattern + "\\@" + byteOrderPattern + signPattern + whiteSpace + offsetScalePattern + whiteSpace + minMaxPattern + whiteSpace + unitPattern
-			  + whiteSpace + receiverPattern) {
+	signal_re(std::string("(SG_)\\s(\\w+)\\s:\\s(\\d+)\\|(\\d+)\\@([0-1])(\\+|\\-)\\s(\\(\\d+.?(\\d+)?),(-?\\d+.?(\\d+)?)\\)\\s\\[(-?\\d+\\.?(\\d+)?)\\|(-?\\d+\\.?(\\d+)?)\\]\\s\"(.*)\"\\s([\\w\\,]+|Vector__XXX)*")) {
 }
 
 void DbcParser::parse_file(const std::string& file) {
