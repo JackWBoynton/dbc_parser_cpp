@@ -12,8 +12,8 @@ set(CPACK_RESOURCE_FILE_LICENSE ${CMAKE_CURRENT_SOURCE_DIR}/LICENSE)
 set(CPACK_RESOURCE_FILE_README ${CMAKE_CURRENT_SOURCE_DIR}/README.md)
 include(CPack)
 
-option(DEBUG "use debug flag" NO)
-option(ENABLE_TESTS "Enable Unittests" ON)
+option(DEBUG "use debug flag" OFF)
+option(ENABLE_TESTS "Enable Unittests" OFF)
 
 # defines variables used in the dbc.pc.in
 include(GNUInstallDirs)
@@ -41,7 +41,7 @@ set(GCC_COMPILE_FLAGS "-Wextra -Wall -Wfloat-equal -Wundef -Wshadow \
 if(DEBUG)
 	set(GCC_COMPILE_FLAGS ${GCC_COMPILE_FLAGS}" -g")
 else()
-	set(GCC_COMPILE_FLAGS ${GCC_COMPILE_FLAGS}" -O2")
+	set(GCC_COMPILE_FLAGS ${GCC_COMPILE_FLAGS}" -O3")
 endif()
 
 set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
